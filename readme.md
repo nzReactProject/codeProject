@@ -37,6 +37,7 @@ db.once('open',()=>{
 admin 中的 add  update  del
 
 
-
+### 生成文档
+在有server.js文件的目录下执行   apidoc -i ./router -o ./doc（生成新的文档时，先把原来的删除）
 
 

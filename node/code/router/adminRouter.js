@@ -5,7 +5,7 @@ console.log('有执行')
 /**
  * @api {get} /admin/list   查询所有的管理员
  * @apiName list
- * @apiGroup list
+ * @apiGroup admin
  *
  * @apiSuccess {String} code 状态码r.
  * @apiSuccess {String} msg  信息提示.
@@ -23,7 +23,7 @@ router.get('/list',(req,res)=>{
 /**
  * @api {post} /admin/add   添加管理员
  * @apiName add
- * @apiGroup add
+ * @apiGroup admin
  *
  * @apiParam {String} userName 用户名.
  * @apiParam {String} passWord 密码.
@@ -50,7 +50,7 @@ router.post('/add',(req,res)=>{
 /**
  * @api {delete} /admin/del   删除管理员
  * @apiName del
- * @apiGroup del
+ * @apiGroup admin
  *
  * @apiParam {String} _id 用户名id.
  * 
@@ -75,7 +75,7 @@ router.delete('/del',(req,res)=>{
 /**
  * @api {post} /admin/update   修改管理员
  * @apiName update
- * @apiGroup update
+ * @apiGroup admin
  *
  * @apiParam {String} _id 用户_id.
  * @apiParam {String} userName 用户名.
