@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Box from './Box/index'
-import {HashRouter,Route} from 'react-router-dom'
+import {HashRouter,Route,Redirect} from 'react-router-dom'
 import Home from './pages/Home/index'
 import Market from './pages/Market';
 import GoodsList from './pages/Goods/GoodsList';
@@ -12,6 +12,7 @@ class App extends Component{
     return (
       <HashRouter>
         <Box>
+          <Redirect from='/' to='/admin/home'></Redirect>
           <Route path='/admin/home' component={Home}></Route>
           <Route path='/admin/market' component={Market}></Route>
           <Route path='/admin/goodsList' component={GoodsList}></Route>

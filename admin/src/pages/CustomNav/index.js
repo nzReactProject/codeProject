@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import style from './index.module.less'
 import { Menu } from 'antd';
+import {withRouter} from 'react-router-dom'
 import {
   HomeOutlined,
   SettingOutlined,
@@ -10,23 +11,74 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 
-import state from '../Store/navData/index' // 数据
+import navData from '../Store/navData/index' // 数据
 const {SubMenu } = Menu;
+function handleClick(e) {
+  // 点击获取跳转路径通过编程式导航实现跳转
+  console.log(e)
+  let {path} = e.item.props 
+  this.props.history.replace(path)
+}
 
 class CustomNav extends Component {
+  renderIcon(icon){
+    switch (icon) {
+      case 'HomeOutlined':
+        return <HomeOutlined/>
+        break;
+      case 'SettingOutlined':
+        return <SettingOutlined/>
+        break;
+      case 'AreaChartOutlined':
+        return <AreaChartOutlined/>
+        break;
+      case 'ShopOutlined':
+        return <ShopOutlined/>
+        break;
+      case 'UserOutlined':
+        return <UserOutlined/>
+        break;
+      default:
+        return <UserOutlined />
+        break;
+    }
+  }
+  renderNav(data){
+    return data.map((item,index)=>{
+      if(item.children){
+        return(
+          <SubMenu key={item.key} title={(()=>{
+            return(
+              <span>
+                {this.renderIcon(item.icon)}
+                {item.title}
+              </span>
+            )
+          })()}>
+            {/* 如果里面还有2级 将渲染的方法在调用一遍 */}
+            {this.renderNav(item.children)}
+          </SubMenu>
+        )
+      }else{
+        return(
+        <Menu.Item key={item.key} path={item.path}>
+          {this.renderIcon(item.icon)}
+          {item.title}
+        </Menu.Item>
+        )
+      }
+    })
+  }
   render(){
     return(
       <div>
         <h1 className={style.nav_login}>化妆品</h1>
         <div>
-        <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark">
+        <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" onClick={handleClick.bind(this)}>
           {/* 
           
-            这里是渲染侧边栏 数据来源 state
-            具体效果可以看一下下面的，
-            任务：完成页面跳转即可，可以参考老师的（做侧边栏）代码
-          
           */}
+          {this.renderNav(navData)}
         </Menu>
 
           {/* <Menu
@@ -67,4 +119,4 @@ class CustomNav extends Component {
   }
 }
 
-export default CustomNav
+export default withRouter(CustomNav)
