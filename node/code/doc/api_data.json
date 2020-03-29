@@ -208,6 +208,66 @@
     "groupTitle": "admin"
   },
   {
+    "type": "post",
+    "url": "/goods/add",
+    "title": "添加商品接口",
+    "name": "add",
+    "group": "list",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/goodsRouter.js",
+    "groupTitle": "list"
+  },
+  {
+    "type": "delete",
+    "url": "/goods/del",
+    "title": "删除商品接口",
+    "name": "del",
+    "group": "list",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/goodsRouter.js",
+    "groupTitle": "list"
+  },
+  {
     "type": "get",
     "url": "/goods/list",
     "title": "查询所有的商品",
@@ -236,6 +296,36 @@
             "optional": false,
             "field": "list",
             "description": "<p>返回的数据.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/goodsRouter.js",
+    "groupTitle": "list"
+  },
+  {
+    "type": "post",
+    "url": "/goods/update",
+    "title": "修改商品接口",
+    "name": "update",
+    "group": "list",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
           }
         ]
       }
