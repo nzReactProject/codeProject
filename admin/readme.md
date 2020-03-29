@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 化妆品后台管理系统
+### react 脚手架工具
+1. 全局安装脚手架 npm  install create-react-app -g 
+2. 查看是否安装成功 create-react-app  -V
+3. create-react-app 项目名字    通过脚手架工具创建项目
 
-## Available Scripts
+注意：部分插件的版本依赖问题  需要打开旺旺大礼包
+npm run  eject  
+打开旺旺大礼包之前执行一次本地git仓库的提交
 
-In the project directory, you can run:
+npm start 跳转到实例界面项目就算创建ok
 
-### `npm start`
+#### 框架：antd
+```
+npm i @ant-design/pro-layout --save
+```
+#### 样式 less
+ 1. 安装相关的预处理语言与加载器
+ npm install less less-loader --save-dev
+ 2. 修改配置文件  config/webpack.config.js 将sass相关全变成less 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 引入antd
+ 引入全部的样式文件 index.js 
+ import 'antd/dist/antd.css'
+ import {Button} from antd 
+#### 按需引入 
+ ```
+ 下载安装 npm install   babel-plugin-import
+ 修改webpack.config.js 找 babel-loader >plugins
+ babel-loader 
+ "plugins": [
+    ....,
+    ["import", {'libraryName':'antd',style:true}]
+ ]
+ 将less的版本回退到2.7.3 
+ 将index.js 里的全局样式文件删除 
+ ```
+### 网络请求 axios
+1. axios做二次封装  拦截器
+2. 处理跨域代理问题 webpackDevServer.config.js ->proxy ->配置方式和vue中完全一致
+```
+{
+   ...,
+   proxy:{
+      "hehe":{
+         target:"",
+         changeOrigin:true,
+         pathRewrite:{
+            "^/hehe":''
+         }
+      },
+       "xixi":{
+         target:"",
+         changeOrigin:true,
+         pathRewrite:{
+            "^/hehe":''
+         }
+      }
+   }
+   ...
+}
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

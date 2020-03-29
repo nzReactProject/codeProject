@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Box from './Box/index'
+import {HashRouter,Route} from 'react-router-dom'
+import Home from './pages/Home/index'
+import Market from './pages/Market';
+import GoodsList from './pages/Goods/GoodsList';
+import UserList from './pages/Admins/UserList'
+import isSet from './pages/isSet'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  render(){
+    return (
+      <HashRouter>
+        <Box>
+          <Route path='/admin/home' component={Home}></Route>
+          <Route path='/admin/market' component={Market}></Route>
+          <Route path='/admin/goodsList' component={GoodsList}></Route>
+          <Route path='/admin/usersList' component={UserList}></Route>
+          <Route path='/admin/isset' component={isSet}></Route>
+        </Box>
+      </HashRouter>
+    )
+  }
 }
 
 export default App;
