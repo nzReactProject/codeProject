@@ -3,7 +3,7 @@ class GoodsList extends Component {
   render(){
     return (
       <div>
-        商品列表
+        商品列表1
       </div>
     )
   }
