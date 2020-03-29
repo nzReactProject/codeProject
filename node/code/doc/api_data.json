@@ -337,7 +337,7 @@
   {
     "type": "post",
     "url": "/admin/login",
-    "title": "添加管理员",
+    "title": "用户登录",
     "name": "login",
     "group": "login",
     "parameter": {

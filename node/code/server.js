@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 // 管理员路由
 let admin = require('./router/adminRouter')
 //  http://localhost:3019/admin/list
+// http://39.108.157.15:3019/admin/list
 app.use('/admin',admin)
 
 // 商品信息路由

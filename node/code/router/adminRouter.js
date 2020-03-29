@@ -115,7 +115,7 @@ router.put('/update',(req,res)=>{
 })
 /************  userLogin ******** */
  /**
- * @api {post} /admin/login   添加管理员
+ * @api {post} /admin/login   用户登录
  * @apiName login
  * @apiGroup login
  *
