@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const {adminList,adminAdd,adminDel,adminUpdate,userLogin} = require('../controls/adminCtr')
-console.log('有执行')
 /**
  * @api {get} /admin/list   查询所有的管理员
  * @apiName list
