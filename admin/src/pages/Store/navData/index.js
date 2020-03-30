@@ -38,5 +38,11 @@ export default [
         path:'/admin/usersList'
       }
     ]
+  },
+  {
+    key:'5',
+    title:'设置',
+    icon:'SettingOutlined',
+    path:'/admin/isset'
   }
 ]
