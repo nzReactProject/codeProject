@@ -16,16 +16,16 @@ class Login extends Component {
         console.log('ok')
         AdminApi.login(data).then((res)=>{
           console.log(res)
-          // if(res.code === 404){
-          //   message.error('用户名密码错误')
-          // }else{
-          //   // 登录成功获取token并且保存到localstorage里 
-          //   localStorage.setItem('token',res.token)
-          //   message.success('登录成功，3s后跳转首页',3,()=>{
-          //     this.props.history.replace('/admin')
-          //   })
-          // }
-         
+          let {code,msg,token,enterTime} = res
+          if(code){
+            localStorage.setItem('token',token)
+            localStorage.setItem('enterTime',enterTime)
+            message.success(msg+'，即将进入系统，请稍后',()=>{
+              this.props.history.replace('/admin')
+            })
+          } else {
+            message.error(msg)
+          }
         })
       }
     })

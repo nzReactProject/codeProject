@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken,eTime} = require('../controls/adminCtr')
+const {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken} = require('../controls/adminCtr')
 const jsonWebToken = require("jsonwebtoken") /* 创建token */
 const {secret} = require("../config/config")
 
@@ -155,21 +155,18 @@ router.post('/login',(req,res)=>{
   } else {
     userLogin({userName,passWord}).then((infos)=>{
       if(infos != null){
-        // 生成token
         // let data = {userName:'sss',passWord:'123'}
         let {userName,passWord,_id} = infos
+        // 生成token
         let token = jsonWebToken.sign({userName,passWord},secret)
+        let enterTime = dateToString(new Date())
         // 生产token后将token更新到数据库
         // 调用更新的接口
-        loginToken({_id},token)
-        // 创建登录时间
-        let time = dateToString(new Date())
-        // 更新登录时间
-        eTime({_id},time)
-        res.send({code:1,msg:'登录成功',token,enterTime:time})
+        loginToken({_id},token,enterTime)
+        res.send({code:1,msg:'登录成功',token,enterTime})
       } else {
         console.log('登录失败')
-        res.send({code:1,msg:'用户名或密码错误'})
+        res.send({code:0,msg:'用户名或密码错误'})
       }
     }).catch((err)=>{
       res.send({code:0,msg:'登录失败',err:err})

@@ -33,14 +33,15 @@ let adminUpdate = async (_id,userName,passWord) => {
   return update
 }
 
-// 更新token
-let loginToken = async (_id,token) => {
+// 更新token并创建登录时间
+let loginToken = async (_id,token,enterTime) => {
   // let upToken = await adminModel.updateOne({_id},token)
   // console.log({token})
-  let upToken = await adminModel.findOneAndUpdate({_id}, {$set: {token}}, { new: true })
+  let upToken = await adminModel.findOneAndUpdate({_id}, {$set: {token,enterTime}}, { new: true })
   console.log('在这里更新',upToken)
   return upToken
 }
+
 
 // 管理员登录
 let userLogin = ({userName,passWord}) => {
@@ -49,14 +50,6 @@ let userLogin = ({userName,passWord}) => {
   return getUser
 }
 
-// 管理员登录登录时间
-let eTime = (_id,enterTime)=>{
-  console.log(' 管理员登录登录时间',_id,enterTime)
-  // dateToString
-  let createTime = adminModel.findOneAndUpdate({_id}, {$set: {enterTime}}, { new: true })
-  console.log('返回',createTime)
-  return createTime
-}
 
 // 将方法抛出
-module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken,eTime}
+module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken,oTime}

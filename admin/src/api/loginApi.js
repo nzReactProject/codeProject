@@ -6,12 +6,7 @@ class Admin {
     let url = `/rat/admin/login?userName=${userName}&passWord=${passWord}`
     // let url = 'http://localhost:3019/admin/login'
     console.log(url)
-    axios.post(url,{userName,passWord}).then((res)=>{
-      console.log('res',res)
-    }).catch((err)=>{
-      console.log(err)
-    })
-    // return axios.post(url,payload)
+    return axios.post(url,payload)
   }
 }
 
