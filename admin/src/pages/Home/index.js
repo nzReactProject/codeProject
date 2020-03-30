@@ -3,7 +3,7 @@ class Home extends Component{
   render(){
     return (
       <div>
-        这里是默认首页
+        <h1>你好，欢迎进入本系统，我们为您提供优质服务</h1>
       </div>
     )
   }

@@ -25,22 +25,16 @@ class CustomNav extends Component {
     switch (icon) {
       case 'HomeOutlined':
         return <HomeOutlined/>
-        break;
       case 'SettingOutlined':
         return <SettingOutlined/>
-        break;
       case 'AreaChartOutlined':
         return <AreaChartOutlined/>
-        break;
       case 'ShopOutlined':
         return <ShopOutlined/>
-        break;
       case 'UserOutlined':
         return <UserOutlined/>
-        break;
       default:
         return <UserOutlined />
-        break;
     }
   }
   renderNav(data){
@@ -74,46 +68,10 @@ class CustomNav extends Component {
       <div>
         <h1 className={style.nav_login}>化妆品</h1>
         <div>
-        <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" onClick={handleClick.bind(this)}>
-          {/* 
-          
-          */}
-          {this.renderNav(navData)}
-        </Menu>
-
-          {/* <Menu
-          defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            theme="dark"
-          >
-            <Menu.Item key="1"><HomeOutlined/>首页</Menu.Item>
-            <Menu.Item key="2"><AreaChartOutlined />平均日销售</Menu.Item>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <ShopOutlined />
-                  <span>商品管理</span>
-                </span>
-              }
-            >
-              <Menu.Item key="3">商品列表</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <UserOutlined />
-                  <span>管理员</span>
-                </span>
-              }
-            >
-              <Menu.Item key="4">管理员列表</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="5"><SettingOutlined/>设置</Menu.Item>
-          </Menu> */}
-      </div>
+          <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" onClick={handleClick.bind(this)}>
+            {this.renderNav(navData)}
+          </Menu>
+        </div>
       </div>
     )
   }

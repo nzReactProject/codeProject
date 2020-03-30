@@ -1,6 +1,27 @@
 const express = require('express')
 const router = express.Router()
-const {adminList,adminAdd,adminDel,adminUpdate,userLogin} = require('../controls/adminCtr')
+const {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken,eTime} = require('../controls/adminCtr')
+const jsonWebToken = require("jsonwebtoken") /* 创建token */
+const {secret} = require("../config/config")
+
+// 创建时间
+function dateToString(date){
+	var y = date.getFullYear();
+	var m = date.getMonth()+1;
+	var d = date.getDate();
+	var h = date.getHours();
+	var f = date.getMinutes();
+	var s = date.getSeconds();
+	var w = date.getDay();
+	return y + "/" + toDB(m) + "/" + toDB(d) + "/" + toDB(h) + ":" + toDB(f);
+}
+//个位数前加0
+// 个位数 < 10
+function toDB(num){
+	return num < 10 ? "0" + num : num;
+}
+
+
 /**
  * @api {get} /admin/list   查询所有的管理员
  * @apiName list
@@ -13,6 +34,7 @@ const {adminList,adminAdd,adminDel,adminUpdate,userLogin} = require('../controls
  */
 router.get('/list',(req,res)=>{
   adminList().then((info)=>{
+    // let {getUser,token}
     res.send({code:1,msg:'查询成功',list:info,cout:info.length})
   }).catch((err)=>{
     res.send({code:0,msg:'查询失败',err})
@@ -133,8 +155,20 @@ router.post('/login',(req,res)=>{
   } else {
     userLogin({userName,passWord}).then((infos)=>{
       if(infos != null){
-        res.send({code:1,msg:'登录成功'})
+        // 生成token
+        // let data = {userName:'sss',passWord:'123'}
+        let {userName,passWord,_id} = infos
+        let token = jsonWebToken.sign({userName,passWord},secret)
+        // 生产token后将token更新到数据库
+        // 调用更新的接口
+        loginToken({_id},token)
+        // 创建登录时间
+        let time = dateToString(new Date())
+        // 更新登录时间
+        eTime({_id},time)
+        res.send({code:1,msg:'登录成功',token,enterTime:time})
       } else {
+        console.log('登录失败')
         res.send({code:1,msg:'用户名或密码错误'})
       }
     }).catch((err)=>{
