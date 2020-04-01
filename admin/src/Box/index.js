@@ -20,7 +20,7 @@ class Box extends Component{
               <Heade/>
             </Header>
             <Content>
-              {/* {this.props.children} */}
+              {this.props.children}
               </Content>
           </Layout>
         </Layout>
