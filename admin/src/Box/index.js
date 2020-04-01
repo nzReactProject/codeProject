@@ -2,8 +2,9 @@ import React, { Component,Fragment } from 'react'
 import style from './index.module.less'
 import { Layout } from 'antd';
 import CustomNav from '../pages/CustomNav/index'
+import Heade from '../pages/Header/index'
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 
 class Box extends Component{
   render(){
@@ -15,9 +16,12 @@ class Box extends Component{
             <CustomNav></CustomNav>
           </Sider>
           <Layout>
-            <Header style={{background:'#fff'}}>Header</Header>
-            <Content>{this.props.children}</Content>
-            <Footer>Footer</Footer>
+            <Header style={{background:'#fff'}}>
+              <Heade/>
+            </Header>
+            <Content>
+              {/* {this.props.children} */}
+              </Content>
           </Layout>
         </Layout>
       </Fragment>

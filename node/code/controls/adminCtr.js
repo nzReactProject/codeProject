@@ -33,11 +33,23 @@ let adminUpdate = async (_id,userName,passWord) => {
   return update
 }
 
+// 更新token并创建登录时间
+let loginToken = async (_id,token,enterTime) => {
+  // let upToken = await adminModel.updateOne({_id},token)
+  // console.log({token})
+  let upToken = await adminModel.findOneAndUpdate({_id}, {$set: {token,enterTime}}, { new: true })
+  console.log('在这里更新',upToken)
+  return upToken
+}
+
+
 // 管理员登录
-let userLogin = async ({userName,passWord}) => {
+let userLogin = ({userName,passWord}) => {
+  console.log('打印店东西',{userName,passWord})
   let getUser = adminModel.findOne({userName,passWord})
   return getUser
 }
 
+
 // 将方法抛出
-module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin}
+module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken}
