@@ -22,6 +22,12 @@ export default [
         title:'商品列表',
         icon:'ShopOutlined',
         path:'/admin/goodsList'
+      },
+      {
+        key:'3-2',
+        title:'商品添加',
+        icon:'ShopOutlined',
+        path:'/admin/goodsAdd'
       }
     ]
   },

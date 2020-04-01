@@ -101,12 +101,12 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
-    proxy:{
-      '/rat':{
-        // target:'http://39.108.157.15:3019/',
+    proxy: {
+      '/rat': {
+        // 这里是目标请求地址
         target:'http://localhost:3019/',
         changeOrigin:true,
-        pathRewrite:{
+        pathRewrite: {
           "^/rat":''
         }
       }
