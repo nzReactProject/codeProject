@@ -52,4 +52,4 @@ let userLogin = ({userName,passWord}) => {
 
 
 // 将方法抛出
-module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken,oTime}
+module.exports = {adminList,adminAdd,adminDel,adminUpdate,userLogin,loginToken}

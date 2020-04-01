@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import Box from './Box/index'
 import {HashRouter,Route,Redirect} from 'react-router-dom'
-import Home from './pages/Home/index'
-import Market from './pages/Market';
-import GoodsList from './pages/Goods/GoodsList';
-import UserList from './pages/Admins/UserList'
-import isSet from './pages/isSet'
-import Login from './pages/Login/index'
+import LoadComponent from './Loadable/ComponentsLoad.js'
+// import Home from './pages/Home/index'
+// import Market from './pages/Market';
+// import GoodsList from './pages/Goods/GoodsList';
+// import UserList from './pages/Admins/UserList'
+// import isSet from './pages/isSet'
+// import Login from './pages/Login/index'
+
+const Home = LoadComponent(()=> import('./pages/Home'))
+const Market = LoadComponent(() => import('./pages/Market'))
+const GoodsList = LoadComponent(() => import('./pages/Goods/GoodsList'))
+const UserList = LoadComponent(()=>import('./pages/Admins/UserList'))
+const isSet = LoadComponent(()=> import('./pages/isSet'))
+const Login = LoadComponent(()=>import('./pages/Login'))
 
 class App extends Component{
   render(){
