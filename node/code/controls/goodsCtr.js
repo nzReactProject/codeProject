@@ -19,7 +19,7 @@ let goodsAdd = async (obj) => {
 // 删除商品会需要一个参数，这个参数就是商品的id，所以在这里接收id参数
 let goodsDel = async (_id) => {
   // 使用商品模型下到的deleteOne方法，根据商品传递过来的id进行数据库商品的删除
-  let result = await goodsModel.deleteOne( {_id} )
+  let result = await goodsModel.findByIdAndDelete( {_id} )
 }
 
 
@@ -32,5 +32,12 @@ let goodsUpdate = async (_id,updateInfo) => {
   let result = await goodsModel.updateOne({_id},updateInfo)
 }
 
+let updatePutaway = async (_id,putaway) => {
+  console.log(putaway)
+  let result = await goodsModel.updateOne({_id},putaway)
+  console.log(result)
+  return result
+}
+
 // 将方法抛出
-module.exports = { goodsList,goodsAdd,goodsDel,goodsUpdate }
+module.exports = { goodsList,goodsAdd,goodsDel,goodsUpdate,updatePutaway }
