@@ -7,9 +7,6 @@ import TolEcharts from './echarts/totlEcharts.js'
 
 const { TabPane } = Tabs;
 class Market extends Component {
-  callback(key) {
-    console.log(key);
-  }
   render() { 
     return (
       <div className={style.market_box}>

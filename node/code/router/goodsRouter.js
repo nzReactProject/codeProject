@@ -37,7 +37,6 @@ router.get('/list',(req,res)=>{
  */
 router.post('/add',(req,res) => {
   let { name,price,stock,img,desc,putaway,kind } = req.body
-  console.log(name,price,stock,img,desc,putaway,kind)
   goodsAdd( { name,price,stock,img,desc,putaway,kind } ).then((data) => {
     res.send({code:1,msg:'添加成功'})
   }).catch(() => {
@@ -59,10 +58,8 @@ router.delete('/del',(req,res) => {
   // 获取到页面用户选择的商品id
   // console.log(req.query)
   let {_id} = req.body
-  console.log({_id})
   // 调用商品的删除方法，对数据库里的商品信息进行删除
   goodsDel(_id).then((data) => {
-    console.log(data)
     res.send({code:1,msg:'删除成功'})
   }).catch((err) => {
     console.log(err)
@@ -85,10 +82,8 @@ router.post('/update',(req,res) => {
   // 获取用户在页面选择的商品id以及要修改商品的商品信息
   let {_id} = req.body
   let {name,price,stock,img,desc,putaway,kind} = req.body.info
-  console.log(_id,name,price,stock,img,desc,putaway,kind)
   // 调用修改商品信息的方法
   goodsUpdate(_id,{name,price,stock,img,desc,putaway,kind}).then((data) => {
-    console.log(data)
     res.send({code:1,msg:'修改成功'})
   }).catch((err) => {
     console.log(err)
@@ -99,9 +94,7 @@ router.post('/update',(req,res) => {
 // 修改上架信息的接口
 router.post('/updatePutaway',(req,res) => {
   let {_id,putaway} = req.body
-  console.log(putaway)
   updatePutaway(_id,{putaway}).then((data) => {
-    console.log(data)
     res.send({code:1,msg:'更新成功'})
   }).catch((err) => {
     console.log(err)
@@ -124,7 +117,7 @@ router.post('/goodsInfoById',(req,res) => {
 
 // 文件上传使用的是form-data格式
 router.post('/img',upload.single('hehe'),(req,res) => {//接口路径是/img,并将上传文件的multer插件实例化出来的对象放入参数当中，使用multer实例化对象里面的single方法，里面的参数是相对应的字段
-  console.log(req.file);//拿到的结果如下所示：
+  // console.log(req.file);//拿到的结果如下所示：
   // {
   //     fieldname: 'hehe',
   //     originalname: '1.jpg',

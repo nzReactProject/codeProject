@@ -8,7 +8,6 @@ class AdminAdd extends Component {
    getUserAdd = () =>{
     let userName = this.refs.userName.state.value
     let passWord = this.refs.passWord.state.value
-    console.log(userName,passWord)
     userApi.getUserAdd({userName,passWord}).then((res)=>{
       let {code,msg} = res
       if(code){

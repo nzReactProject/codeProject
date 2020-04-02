@@ -24,37 +24,24 @@ const Login = LoadComponent(()=>import('./pages/Login'))
 const GoodAdd = LoadComponent(()=>import('./pages/Goods/GoodsAdd'))
 const GoodsUpdate = LoadComponent(()=>import('./pages/Goods/GoodsUpdate'))
 
-// import GoodAdd from './pages/Goods/GoodsAdd'
-// import GoodsUpdate from './pages/Goods/GoodsUpdate/index.js'
 class App extends Component{
   render(){
     return (
       <HashRouter>
+        <Redirect from='/' to='/login'></Redirect>
         {/* 登录路由 */}
         <Route path='/login' component={Login}></Route>
         {/* 进入系统的路由 */}
         <Route path='/admin' render={()=>{
-<<<<<<< HEAD
-          return(
-            <Box> 
-              <Redirect from='/' to='/admin/home'></Redirect>
-              <Route path='/admin/home' component={Home}></Route>
-              <Route path='/admin/market' component={Market}></Route>
-              <Route path='/admin/goodsList' component={GoodsList}></Route>
-              <Route path='/admin/usersList' component={UserList}></Route>
-              <Route path='/admin/isset' component={isSet}></Route>
-              <Route path='/admin/goodsAdd' component={GoodAdd}></Route>
-              <Route path='/admin/goodsUpdate/:id' component={GoodsUpdate}></Route>
-            </Box>
-          )
-=======
-          if(localStorage.getItem('name') != 'null'){
+          if(localStorage.getItem('name') !== 'null'){
             return(
               <Box> 
                 <Redirect from='/admin' to='/admin/home'></Redirect>
                 <Route path='/admin/home' component={Home}></Route>
                 <Route path='/admin/market' component={Market}></Route>
                 <Route path='/admin/goodsList' component={GoodsList}></Route>
+                <Route path='/admin/goodsAdd' component={GoodAdd}></Route>
+                <Route path='/admin/goodsUpdate/:id' component={GoodsUpdate}></Route>
                 <Route path='/admin/usersList' component={UserList}></Route>
                 <Route path='/admin/usersAdd' component={usersAdd}></Route>
                 <Route path='/admin/usersUpdate' component={usersUpdate}></Route>
@@ -68,19 +55,8 @@ class App extends Component{
               <Redirect from='/' to='/login'></Redirect>
             )
           }
->>>>>>> futrue
         }}>
         </Route>
-        {/* <Box>
-          <Redirect from='/' to='/admin/home'></Redirect>
-          <Route path='/admin/home' component={Home}></Route>
-          <Route path='/admin/market' component={Market}></Route>
-          <Route path='/admin/goodsList' component={GoodsList}></Route>
-          <Route path='/admin/usersList' component={UserList}></Route>
-          <Route path='/admin/isset' component={isSet}></Route>
-          <Route path='/admin/goodsAdd' component={GoodAdd}></Route>
-          <Route path='/admin/goodsUpdate/:id' component={GoodsUpdate}></Route>
-        </Box> */}
       </HashRouter>
     )
   }

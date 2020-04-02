@@ -6,13 +6,10 @@ import AdminApi from '../../api/loginApi'
 
 class Login extends Component {
   login=()=>{
-    console.log('登录',this)
     let userName = this.refs.user.props.value;
     let passWord = this.refs.pass.props.value;
     if(userName||passWord){
-      console.log({userName,passWord})
       AdminApi.login({userName,passWord}).then((res)=>{
-        console.log(res)
         let {code,msg,token,enterTime} = res
         if(code){
           localStorage.setItem('name',userName)
@@ -26,7 +23,7 @@ class Login extends Component {
         }
       })
     } else {
-      console.log('空着')
+      message.error('不能空着')
     }
   }
   render(){

@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react'
+import React, { Component } from 'react'
 import style from  './index.module.less'
 // 引入关于商品的api文件
 import goodsApi from '../../../api/goods.js'
@@ -7,7 +7,6 @@ import {
   Input,
   Button,
   Select,
-  TreeSelect,
   Card,
   Upload,
   message
@@ -87,9 +86,9 @@ submit= async () => {
   // 调用根据商品id修改商品信息的方法
   let result = await goodsApi.goodsUpdate(id,this.state)
   // console.log(result)
-  let {code,msg} = result.data
+  let {code} = result.data
   // 判断请求是否成功
-  if(code == 1) {
+  if(code === 1) {
     // 表示请求成功
     message.success('修改成功')
     // 跳转回到商品列表页面
@@ -112,12 +111,9 @@ submit= async () => {
     //     })
     //   )
     // }
-    console.log(info)
     let data = info.file
-    console.log(data)
     // let file = new FormData()
     file.append('hehe',data)
-    console.log(file.get('hehe'))
     goodsApi.imgUpload(file).then((res) => {
       console.log(res)
     }).catch((err) => {

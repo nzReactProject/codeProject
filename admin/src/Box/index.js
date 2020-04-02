@@ -8,7 +8,6 @@ const { Header, Sider, Content } = Layout;
 
 class Box extends Component{
   render(){
-    console.log(this)
     return(
       <Fragment>
         <Layout className={style.Box}>

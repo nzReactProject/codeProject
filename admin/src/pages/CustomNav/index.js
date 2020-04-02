@@ -15,7 +15,6 @@ import navData from '../Store/navData/index' // 数据
 const {SubMenu } = Menu;
 function handleClick(e) {
   // 点击获取跳转路径通过编程式导航实现跳转
-  console.log(e)
   let {path} = e.item.props 
   this.props.history.replace(path)
 }

@@ -48,7 +48,6 @@ class AdminList extends Component {
                 leavel==='root'?
                 <div>
                   <Button type='primary' size='small' style={{margin:'0 20px'}} onClick={()=>{
-                    console.log(this.props.history)
                     let path = '/admin/usersUpdate?_id='+_id 
                     this.props.history.replace(path)
                   }

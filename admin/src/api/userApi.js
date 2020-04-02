@@ -7,7 +7,6 @@ class Admin {
     return axios.get(url)
   }
   getUserAdd({userName,passWord}){
-    console.log({userName,passWord})
     let url = `/rat/admin/add?userName=${userName}&passWord=${passWord}`
     if(localStorage.getItem('name') === 'root'){
       return axios.post(url)
@@ -25,7 +24,6 @@ class Admin {
   }
   getUserDel(_id){
     let url = '/rat/admin/del?_id=' + _id
-    console.log(_id)
     if(localStorage.getItem('name') ==='root'){
       return axios.delete(url)
     } else {

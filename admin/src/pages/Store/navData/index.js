@@ -61,11 +61,7 @@ export default [
     key:'5',
     title:'设置',
     icon:'SettingOutlined',
-<<<<<<< HEAD
-    path:'/admin/isset'
-=======
     path:'/admin/set'
->>>>>>> futrue
   }
 ]
 

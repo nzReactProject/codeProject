@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react'
+import React, { Component } from 'react'
 import style from  './index.module.less'
 // 引入关于商品的api文件
 import goodsApi from '../../../api/goods.js'
@@ -7,7 +7,6 @@ import {
   Input,
   Button,
   Select,
-  TreeSelect,
   Card,
   Upload,
   message
@@ -44,7 +43,7 @@ class GoodsUpdate extends Component {
     let {id} = this.props.match.params
     // console.log(id)
     // 根据商品的id去请求商品的数据
-    let result = await goodsApi.goodsInfoById(id)
+    await goodsApi.goodsInfoById(id)
     // console.log(result)
     // console.log(result.data.data[0].name)
     this.setState({
@@ -78,7 +77,7 @@ class GoodsUpdate extends Component {
 // 当点击确认提交时触发的事件
 submit= async () => {
   // 获取到商品的id
-  let {id} = this.props.match.params
+  // let {id} = this.props.match.params
   // 当点击提交的时候，先确认一下是否提交了照片，可以通过判断图片的路径是否存在
   if(!this.state.path) {
     return message.info('请先上传图片')
@@ -87,7 +86,7 @@ submit= async () => {
   let result = await goodsApi.goodsAdd(this.state)
   let {code} = result.data
   // 判断请求是否成功
-  if(code == 1) {
+  if(code === 1) {
     // 表示请求成功
     message.success('添加成功')
     // 跳转回到商品列表页面
@@ -110,12 +109,9 @@ submit= async () => {
     //     })
     //   )
     // }
-    console.log(info)
     let data = info.file
-    console.log(data)
     // let file = new FormData()
     file.append('hehe',data)
-    console.log(file.get('hehe'))
     goodsApi.imgUpload(file).then((res) => {
       console.log(res)
     }).catch((err) => {
@@ -123,7 +119,7 @@ submit= async () => {
     })
   }
   render(){
-    let {name,stock,price,img,desc,putaway,kind} = this.state
+    let {name,stock,price,desc,putaway,kind} = this.state
     const uploadButton = (
       <div>
         {this.state.loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -145,7 +141,6 @@ submit= async () => {
         >
         <Form.Item label="名称">
           <Input ref= 'name' value={name} onChange= {(e) => {
-            console.log(e.target.value)
             this.setState({name:e.target.value})
           }}/>
         </Form.Item>
@@ -174,7 +169,6 @@ submit= async () => {
         </Form.Item>
         <Form.Item label="类别">
           <Select ref='kind' value = {kind} onChange= {(e) => {
-            console.log(e)
             this.setState({kind:String(e)})
           }}>
             <Select.Option value="彩妆">彩妆</Select.Option>
