@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { goodsList,goodsAdd,goodsDel,goodsUpdate,updatePutaway } = require('../controls/goodsCtr')
+const { goodsList,goodsAdd,goodsDel,goodsUpdate,updatePutaway,goodsInfoById } = require('../controls/goodsCtr')
 const bodyparsert = require('body-parser');//引入处理post数据的第三方插件
 const multer = require('multer');//利用multer插件进行文件的上传，相当于是一个中间插件
 const upload = multer({});//实例化一个multer对象
@@ -37,6 +37,7 @@ router.get('/list',(req,res)=>{
  */
 router.post('/add',(req,res) => {
   let { name,price,stock,img,desc,putaway,kind } = req.body
+  console.log(name,price,stock,img,desc,putaway,kind)
   goodsAdd( { name,price,stock,img,desc,putaway,kind } ).then((data) => {
     res.send({code:1,msg:'添加成功'})
   }).catch(() => {
@@ -80,11 +81,14 @@ router.delete('/del',(req,res) => {
  * 
  */
 router.post('/update',(req,res) => {
-  console.log(req.body)
+  // console.log(req.body)
   // 获取用户在页面选择的商品id以及要修改商品的商品信息
-  let {_id,name,price,stock,img,desc,putaway,kind} = req.body
+  let {_id} = req.body
+  let {name,price,stock,img,desc,putaway,kind} = req.body.info
+  console.log(_id,name,price,stock,img,desc,putaway,kind)
   // 调用修改商品信息的方法
-  goodsUpdate(_id,{name,price,stock,img,desc,putaway,kind}).then(() => {
+  goodsUpdate(_id,{name,price,stock,img,desc,putaway,kind}).then((data) => {
+    console.log(data)
     res.send({code:1,msg:'修改成功'})
   }).catch((err) => {
     console.log(err)
@@ -102,6 +106,19 @@ router.post('/updatePutaway',(req,res) => {
   }).catch((err) => {
     console.log(err)
     res.send({code:0,msg:'更新失败'})
+  })
+})
+
+// 根据商品id获取单个商品信息的接口
+router.post('/goodsInfoById',(req,res) => {
+  let {_id} = req.body// 获取到页面用户输入的id
+  // console.log(_id)
+  goodsInfoById(_id).then((data) => {
+    // console.log(data)
+    res.send({code:1,msg:'查询成功',data:data})
+  }).catch((err) => {
+    // console.log(err)
+    res.send({code:0,msg:'查询失败',data:err})
   })
 })
 
