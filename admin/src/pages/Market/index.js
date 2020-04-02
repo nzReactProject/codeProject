@@ -43,7 +43,6 @@ class Market extends Component {
           </TabPane>
         </Tabs>
       </div>
-      <div></div>
     )
   }
 }

@@ -16,13 +16,11 @@ const UserList = LoadComponent(()=>import('./pages/Admins/UserList'))
 const isSet = LoadComponent(()=> import('./pages/isSet'))
 const Login = LoadComponent(()=>import('./pages/Login'))
 
-import Home from './pages/Home/index'
-import Market from './pages/Market';
-import GoodsList from './pages/Goods/GoodsList';
-import UserList from './pages/Admins/UserList';
-import isSet from './pages/isSet';
-import GoodAdd from './pages/Goods/GoodsAdd'
-import GoodsUpdate from './pages/Goods/GoodsUpdate/index.js'
+const GoodAdd = LoadComponent(()=>import('./pages/Goods/GoodsAdd'))
+const GoodsUpdate = LoadComponent(()=>import('./pages/Goods/GoodsUpdate'))
+
+// import GoodAdd from './pages/Goods/GoodsAdd'
+// import GoodsUpdate from './pages/Goods/GoodsUpdate/index.js'
 class App extends Component{
   render(){
     return (
@@ -33,17 +31,19 @@ class App extends Component{
         <Route path='/admin' render={()=>{
           return(
             <Box> 
-              <Redirect from='/admin' to='/admin/home'></Redirect>
+              <Redirect from='/' to='/admin/home'></Redirect>
               <Route path='/admin/home' component={Home}></Route>
               <Route path='/admin/market' component={Market}></Route>
               <Route path='/admin/goodsList' component={GoodsList}></Route>
               <Route path='/admin/usersList' component={UserList}></Route>
               <Route path='/admin/isset' component={isSet}></Route>
+              <Route path='/admin/goodsAdd' component={GoodAdd}></Route>
+              <Route path='/admin/goodsUpdate/:id' component={GoodsUpdate}></Route>
             </Box>
           )
         }}>
         </Route>
-        <Box>
+        {/* <Box>
           <Redirect from='/' to='/admin/home'></Redirect>
           <Route path='/admin/home' component={Home}></Route>
           <Route path='/admin/market' component={Market}></Route>
@@ -52,7 +52,7 @@ class App extends Component{
           <Route path='/admin/isset' component={isSet}></Route>
           <Route path='/admin/goodsAdd' component={GoodAdd}></Route>
           <Route path='/admin/goodsUpdate/:id' component={GoodsUpdate}></Route>
-        </Box>
+        </Box> */}
       </HashRouter>
     )
   }
