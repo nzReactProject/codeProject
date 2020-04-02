@@ -32,6 +32,7 @@ let goodsUpdate = async (_id,updateInfo) => {
   let result = await goodsModel.updateOne({_id},updateInfo)
 }
 
+// 修改商品上架信息的的方法
 let updatePutaway = async (_id,putaway) => {
   console.log(putaway)
   let result = await goodsModel.updateOne({_id},putaway)
@@ -39,5 +40,9 @@ let updatePutaway = async (_id,putaway) => {
   return result
 }
 
+// 根据商品id获取单个商品id的方法
+let goodsInfoById = async (_id) => {
+  return result = await goodsModel.find({_id})
+}
 // 将方法抛出
-module.exports = { goodsList,goodsAdd,goodsDel,goodsUpdate,updatePutaway }
+module.exports = { goodsList,goodsAdd,goodsDel,goodsUpdate,updatePutaway,goodsInfoById }

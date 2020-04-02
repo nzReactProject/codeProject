@@ -20,18 +20,11 @@ class GoodsList extends Component {
     let result = await goodsApi.goodsList()
     let {list} = result.data
     this.setState({list:list})
-    console.log(result)
-    console.log(list[0].img)
+    // console.log(result)
+    // console.log(list[0].img)
   }
   putaway = async (_id,putaway) => {
-    console.log(_id,putaway)
-    // if(putaway == "上架") {
-    //   putaway = "下架"
-    // } else {
-    //   putaway = "上架"
-    // }
     let putawaye = putaway=="上架"?"下架":"上架"
-    // console.log(putawaye)
     let result = await goodsApi.updatePutaway(_id,putawaye)
     console.log(result)
     this.getGoodsData()

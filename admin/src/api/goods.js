@@ -36,7 +36,27 @@ class Goods {
   imgUpload(file) {
     console.log(file)
     let url = '/rat/goods/img'
-    return axios.post(file)
+    return axios.post(url,file)
+  }
+
+  // 根据商品id获取单个商品的数据请求方法
+  goodsInfoById(_id) {
+    // console.log(_id)
+    let url = '/rat/goods/goodsInfoById'
+    return axios.post(url,{_id})
+  }
+
+  // 根据商品id去修改商品信息
+  goodsUpdate(_id,info) {
+    console.log(_id,info)
+    let url = '/rat/goods/update'
+    return axios.post(url,{_id,info})
+  }
+  // 添加商品的接口
+  goodsAdd(goodsInfo) {
+    console.log(goodsInfo)
+    let url = '/rat/goods/add'
+    return axios.post(url,goodsInfo)
   }
 }
 
