@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react';
-import style from './index.module.less'
 class DayCount extends Component {
   state ={
     option : {

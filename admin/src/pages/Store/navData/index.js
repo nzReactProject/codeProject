@@ -42,6 +42,18 @@ export default [
         title:'管理员列表',
         icon:'UserOutlined',
         path:'/admin/usersList'
+      },
+      {
+        key:'4-2',
+        title:'管理员添加',
+        icon:'UserOutlined',
+        path:'/admin/usersAdd'
+      },
+      {
+        key:'4-3',
+        title:'管理员更新',
+        icon:'UserOutlined',
+        path:'/admin/usersUpdate'
       }
     ]
   },
@@ -49,6 +61,11 @@ export default [
     key:'5',
     title:'设置',
     icon:'SettingOutlined',
+<<<<<<< HEAD
     path:'/admin/isset'
+=======
+    path:'/admin/set'
+>>>>>>> futrue
   }
 ]
+

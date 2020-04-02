@@ -15,6 +15,7 @@ class Login extends Component {
         console.log(res)
         let {code,msg,token,enterTime} = res
         if(code){
+          localStorage.setItem('name',userName)
           localStorage.setItem('token',token)
           localStorage.setItem('enterTime',enterTime)
           message.success(msg+'，即将进入系统，请稍后',()=>{
@@ -49,16 +50,16 @@ class Login extends Component {
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            <a className={style.login_form_forgot} href="">
+            <span className={style.login_form_forgot}>
               Forgot password
-            </a>
+            </span>
           </Form.Item>
 
           <Form.Item>
             <Button type="primary" onClick={this.login} className={style.login_form_button}>
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            Or <span>register now!</span>
           </Form.Item>
         </Form>
       </div>
