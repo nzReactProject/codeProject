@@ -38,6 +38,7 @@ class CustomNav extends Component {
     }
   }
   renderNav(data){
+    // let user = localStorage.getItem('name')
     return data.map((item,index)=>{
       if(item.children){
         return(

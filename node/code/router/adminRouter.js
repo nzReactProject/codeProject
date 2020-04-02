@@ -55,7 +55,6 @@ router.get('/list',(req,res)=>{
  * 
  */
 router.post('/add',(req,res)=>{
-  console.log(req.query)
   let {userName,passWord} = req.query
   if(!userName || !passWord){
     res.send({code:0,msg:'错误的参数'})
@@ -81,6 +80,7 @@ router.post('/add',(req,res)=>{
  * 
  */
 router.delete('/del',(req,res)=>{
+  // console.log(req)
   let {_id} = req.query
   if(!_id){
     res.send({code:0,msg:'错误的参数'})
@@ -88,6 +88,7 @@ router.delete('/del',(req,res)=>{
     adminDel({_id}).then(()=>{
       res.send({code:1,msg:'管理员删除成功'})
     }).catch((err)=>{
+      console.log(err)
       res.send({code:0,msg:'删除失败',err:err})
     })
   }

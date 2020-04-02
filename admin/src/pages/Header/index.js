@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
-import { Avatar,Input,Badge   } from 'antd';
+import {withRouter} from 'react-router-dom'
+import { Avatar,Input,Badge ,Modal } from 'antd';
 import style from './index.module.less'
-import { BellOutlined } from '@ant-design/icons';
+import { BellOutlined,ExclamationCircleOutlined } from '@ant-design/icons';
+
 const { Search } = Input;
+const { confirm } = Modal;
 class Heade extends Component {
+  showConfirm(_this) {
+     confirm({
+       title: '退出',
+       icon: <ExclamationCircleOutlined />,
+       content: '您确定退出账户？',
+       onOk() {
+        let path = '/login'
+        localStorage.setItem('name',null)
+        _this.props.history.replace(path)
+       },
+       onCancel() {},
+     });
+   }
   render(){
     return(
       <div className={style.heade_top}>
@@ -11,10 +27,10 @@ class Heade extends Component {
         <Badge dot >
           <BellOutlined/>
         </Badge>
-          <Avatar style={{marginLeft:'20px'}}>USER</Avatar>
+          <Avatar onClick={()=>{this.showConfirm(this)}} style={{marginLeft:'20px'}}>{localStorage.getItem('name')}</Avatar>
       </div>
     )
   }
 }
 
-export default Heade
+export default withRouter(Heade)
