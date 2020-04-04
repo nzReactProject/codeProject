@@ -48,13 +48,13 @@ class GoodsUpdate extends Component {
     // console.log(result.data.data[0].name)
     // 将获取到的商品信息保存到当前组件的state中，用来渲染界面
     this.setState({
-      name: result.data.data[0].name,
-      price:result.data.data[0].price,
-      stock:result.data.data[0].stock,
-      img:result.data.data[0].img,
-      desc:result.data.data[0].desc,
-      putaway:result.data.data[0].putaway,
-      kind:result.data.data[0].kind,
+      name: result.data[0].name,
+      price:result.data[0].price,
+      stock:result.data[0].stock,
+      img:result.data[0].img,
+      desc:result.data[0].desc,
+      putaway:result.data[0].putaway,
+      kind:result.data[0].kind,
     })
 
   }

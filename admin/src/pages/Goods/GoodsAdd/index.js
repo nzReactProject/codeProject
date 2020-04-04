@@ -66,9 +66,10 @@ class GoodsUpdate extends Component {
     // console.log(file.get('hehe'))
     let result = await goodsApi.imgUpload(file)
     // console.log(result.data.path)
-    let img = result.data.path.slice(22)
+    console.log(result)
+    let img = result.path.slice(22)
     this.setState({
-      path:result.data.path,
+      path:result.path,
       img:img
     })
 
@@ -84,7 +85,7 @@ submit= async () => {
   }
   // 调用添加商品信息的方法
   let result = await goodsApi.goodsAdd(this.state)
-  let {code} = result.data
+  let {code} = result
   // 判断请求是否成功
   if(code === 1) {
     // 表示请求成功
