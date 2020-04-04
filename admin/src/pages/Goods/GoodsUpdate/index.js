@@ -14,6 +14,9 @@ import {
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 const file = new FormData()
 
+// const rootPath = 'http://localhost:3019'
+const rootPath = 'http://39.108.157.15:3019'
+
 // 上传图片
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -66,10 +69,12 @@ class GoodsUpdate extends Component {
     file.append('hehe',data)
     // console.log(file.get('hehe'))
     let result = await goodsApi.imgUpload(file)
-    // console.log(result.data.path)
-    let img = result.data.path.slice(22)
+    console.log(result)
+    let img = result.path.substring(1)
+    // let img = result.path
+    console.log(img)
     this.setState({
-      path:result.data.path,
+      path:result.path,
       img:img
     })
 
@@ -86,7 +91,7 @@ submit= async () => {
   // 调用根据商品id修改商品信息的方法
   let result = await goodsApi.goodsUpdate(id,this.state)
   // console.log(result)
-  let {code} = result.data
+  let {code} = result
   // 判断请求是否成功
   if(code === 1) {
     // 表示请求成功
@@ -183,7 +188,7 @@ submit= async () => {
         
         <input type="file" className={style.upload} ref= 'img' />
         {/* 显示缩略图 */}
-        <img className={style.button} src={path} width='120px' height= '120px' alt="暂无图片"/>
+        <img className={style.button} src={rootPath + path} width='120px' height= '120px' alt="暂无图片"/>
         <br/>
         <Button className={style.button} onClick = {() => {
           this.upload()

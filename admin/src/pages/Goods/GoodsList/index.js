@@ -48,6 +48,7 @@ class GoodsList extends Component {
           <Column title="价格" dataIndex="price" key="price" />
           <Column title="库存" dataIndex="stock" key="stock" />
           <Column title="图片" dataIndex="img" key="img" render= {img => (
+            // console.log(img)
             <img height='100px' width='100px' src={rootPath + img} alt=""/>
           )} />
           <Column title="描述" dataIndex="desc" key="desc" />
