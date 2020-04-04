@@ -48,13 +48,13 @@ class GoodsUpdate extends Component {
     // console.log(result.data.data[0].name)
     // 将获取到的商品信息保存到当前组件的state中，用来渲染界面
     this.setState({
-      name: result.data.data[0].name,
-      price:result.data.data[0].price,
-      stock:result.data.data[0].stock,
-      img:result.data.data[0].img,
-      desc:result.data.data[0].desc,
-      putaway:result.data.data[0].putaway,
-      kind:result.data.data[0].kind,
+      name: result.data[0].name,
+      price:result.data[0].price,
+      stock:result.data[0].stock,
+      img:result.data[0].img,
+      desc:result.data[0].desc,
+      putaway:result.data[0].putaway,
+      kind:result.data[0].kind,
     })
 
   }
@@ -67,9 +67,10 @@ class GoodsUpdate extends Component {
     // console.log(file.get('hehe'))
     let result = await goodsApi.imgUpload(file)
     // console.log(result.data.path)
-    let img = result.data.path.slice(22)
+    let img = result.path.split(":3019")[1].substring(1)
+    console.log(img)
     this.setState({
-      path:result.data.path,
+      path:result.path,
       img:img
     })
 
@@ -86,7 +87,7 @@ submit= async () => {
   // 调用根据商品id修改商品信息的方法
   let result = await goodsApi.goodsUpdate(id,this.state)
   // console.log(result)
-  let {code} = result.data
+  let {code} = result
   // 判断请求是否成功
   if(code === 1) {
     // 表示请求成功

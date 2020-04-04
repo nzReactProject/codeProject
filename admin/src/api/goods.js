@@ -36,6 +36,7 @@ class Goods {
 
   /* 上传图片的方法 */ 
   imgUpload(file) {
+    // console.log(file)
     let url = '/rat/goods/img'
     return axios.post(url,file)
   }
