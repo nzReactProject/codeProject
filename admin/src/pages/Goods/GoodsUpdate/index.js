@@ -187,7 +187,7 @@ submit= async () => {
         
         <input type="file" className={style.upload} ref= 'img' />
         {/* 显示缩略图 */}
-        <img className={style.button} src={rootPath + path} width='120px' height= '120px' alt="暂无图片"/>
+        <img className={style.button} src={  path} width='120px' height= '120px' alt="暂无图片"/>
         <br/>
         <Button className={style.button} onClick = {() => {
           this.upload()

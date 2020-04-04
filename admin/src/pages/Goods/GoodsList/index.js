@@ -4,8 +4,8 @@ import goodsApi from '../../../api/goods.js'
 import { Table, Tag, Button,Popconfirm,Spin } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 const { Column } = Table;
-// const rootPath = 'http://localhost:3019/'
-const rootPath = 'http://39.108.157.15:3019/'
+const rootPath = 'http://localhost:3019/'
+// const rootPath = 'http://39.108.157.15:3019/'
 
 class GoodsList extends Component {
   state = {
