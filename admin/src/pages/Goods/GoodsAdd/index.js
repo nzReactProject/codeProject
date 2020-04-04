@@ -69,13 +69,9 @@ class GoodsUpdate extends Component {
     // console.log(file.get('hehe'))
     let result = await goodsApi.imgUpload(file)
     // console.log(result.data.path)
-<<<<<<< HEAD
     let img = result.path.split(":3019")[1].substring(1)
     console.log(img)
-=======
-    console.log(result)
-    let img = result.path.substring(1)
->>>>>>> 0c074f118899a47861999d15029e0253a307782a
+
     this.setState({
       path:result.path,
       img:img
