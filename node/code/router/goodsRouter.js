@@ -157,7 +157,7 @@ router.post('/img',upload.single('hehe'),(req,res) => {//接口路径是/img,并
         console.log(err)
           res.send({err:-3,msg:"图片上传失败，请重试"});
       } else {
-          res.send({err:0,msg:"图片上传成功",path:`http://localhost:3019/public/img/${name}.${extName}`});
+          res.send({err:0,msg:"图片上传成功",path:`/public/img/${name}.${extName}`});
       }
   });
 });

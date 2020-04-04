@@ -14,6 +14,9 @@ import {
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 const file = new FormData()
 
+// const rootPath = 'http://localhost:3019'
+const rootPath = 'http://39.108.157.15:3019'
+
 // 上传图片
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -66,8 +69,14 @@ class GoodsUpdate extends Component {
     file.append('hehe',data)
     // console.log(file.get('hehe'))
     let result = await goodsApi.imgUpload(file)
+<<<<<<< HEAD
     // console.log(result.data.path)
     let img = result.path.split(":3019")[1].substring(1)
+=======
+    console.log(result)
+    let img = result.path.substring(1)
+    // let img = result.path
+>>>>>>> 0c074f118899a47861999d15029e0253a307782a
     console.log(img)
     this.setState({
       path:result.path,
@@ -184,7 +193,7 @@ submit= async () => {
         
         <input type="file" className={style.upload} ref= 'img' />
         {/* 显示缩略图 */}
-        <img className={style.button} src={path} width='120px' height= '120px' alt="暂无图片"/>
+        <img className={style.button} src={rootPath + path} width='120px' height= '120px' alt="暂无图片"/>
         <br/>
         <Button className={style.button} onClick = {() => {
           this.upload()

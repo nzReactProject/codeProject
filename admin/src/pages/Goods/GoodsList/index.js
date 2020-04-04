@@ -4,7 +4,9 @@ import goodsApi from '../../../api/goods.js'
 import { Table, Tag, Button,Popconfirm,Spin } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 const { Column } = Table;
-const rootPath = 'http://localhost:3019/'
+// const rootPath = 'http://localhost:3019/'
+const rootPath = 'http://39.108.157.15:3019/'
+
 class GoodsList extends Component {
   state = {
     list:[],
@@ -46,6 +48,7 @@ class GoodsList extends Component {
           <Column title="价格" dataIndex="price" key="price" />
           <Column title="库存" dataIndex="stock" key="stock" />
           <Column title="图片" dataIndex="img" key="img" render= {img => (
+            // console.log(img)
             <img height='100px' width='100px' src={rootPath + img} alt=""/>
           )} />
           <Column title="描述" dataIndex="desc" key="desc" />
