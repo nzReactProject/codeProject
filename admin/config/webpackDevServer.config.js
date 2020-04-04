@@ -105,6 +105,7 @@ module.exports = function(proxy, allowedHost) {
       '/rat': {
         // 这里是目标请求地址
         target:'http://localhost:3019/',
+        // target:'http://localhost:3019/',
         changeOrigin:true,
         pathRewrite: {
           "^/rat":''
